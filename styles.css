@@ -1,0 +1,397 @@
+:root {
+  --ink: #202326;
+  --muted: #687079;
+  --panel: #fbfbf8;
+  --line: #d7dbe0;
+  --red: #b34848;
+  --blue: #315f86;
+  --green: #39745b;
+  --yellow: #d5a23d;
+  --lavender: #74649b;
+  --bg: #eef1f2;
+  --shadow: 0 16px 40px rgba(27, 36, 43, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(120deg, rgba(49, 95, 134, 0.1), transparent 34%),
+    linear-gradient(240deg, rgba(213, 162, 61, 0.15), transparent 38%),
+    var(--bg);
+  color: var(--ink);
+  font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  padding: 10px 13px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--blue);
+}
+
+button.primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: white;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  padding: 10px 11px;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(49, 95, 134, 0.16);
+}
+
+.shell {
+  width: min(1440px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 24px 0 34px;
+}
+
+.topbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(30px, 5vw, 54px);
+  line-height: 1.03;
+}
+
+h2 {
+  margin-bottom: 14px;
+  font-size: 18px;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(108px, 1fr));
+  gap: 10px;
+}
+
+.summary div,
+.controls,
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(251, 251, 248, 0.94);
+  box-shadow: var(--shadow);
+}
+
+.summary div {
+  padding: 12px;
+}
+
+.summary span,
+label,
+.panel-head span,
+.game-meta,
+.empty {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.summary strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 24px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 150px 150px 150px;
+  gap: 10px;
+  align-items: end;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 300px minmax(420px, 1fr) 360px;
+  gap: 16px;
+  align-items: start;
+}
+
+.panel {
+  padding: 14px;
+}
+
+.game-form {
+  display: grid;
+  gap: 10px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.game-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.game-card:hover,
+.game-card.selected {
+  transform: translateY(-2px);
+  border-color: var(--blue);
+}
+
+.cover {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1.45;
+  background:
+    linear-gradient(135deg, rgba(49, 95, 134, 0.45), rgba(213, 162, 61, 0.38)),
+    #26313a;
+  color: white;
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.stale-ribbon {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  border-radius: 999px;
+  background: rgba(32, 35, 38, 0.86);
+  color: #fff;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.game-body {
+  padding: 11px;
+}
+
+.game-body h3 {
+  margin-bottom: 7px;
+  font-size: 18px;
+}
+
+.game-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.pill {
+  border-radius: 999px;
+  background: rgba(49, 95, 134, 0.1);
+  color: var(--blue);
+  padding: 5px 8px;
+}
+
+.pill.heavy {
+  background: rgba(116, 100, 155, 0.13);
+  color: var(--lavender);
+}
+
+.detail-panel {
+  position: sticky;
+  top: 18px;
+}
+
+.detail-cover {
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 1.55;
+  background:
+    linear-gradient(135deg, rgba(57, 116, 91, 0.45), rgba(179, 72, 72, 0.36)),
+    #26313a;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.detail-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quick-card {
+  display: grid;
+  gap: 10px;
+}
+
+.rule-section {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px;
+}
+
+.rule-section h3 {
+  margin-bottom: 8px;
+}
+
+.rule-list {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rule-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid #eef0f2;
+  padding-bottom: 7px;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.rule-list li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.rule-list button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  flex: 0 0 auto;
+}
+
+.add-rule {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.detail-actions button {
+  flex: 1;
+}
+
+@media (max-width: 1160px) {
+  .topbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .controls,
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .shell {
+    width: min(100vw - 20px, 1440px);
+  }
+
+  .summary,
+  .split {
+    grid-template-columns: 1fr;
+  }
+}

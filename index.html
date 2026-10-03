@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>桌游规则遗忘点卡片库</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">聚会前快速复习</p>
+          <h1>桌游规则遗忘点卡片库</h1>
+        </div>
+        <div class="summary">
+          <div>
+            <span>收藏</span>
+            <strong id="gameCount">0</strong>
+          </div>
+          <div>
+            <span>遗忘点</span>
+            <strong id="ruleCount">0</strong>
+          </div>
+          <div>
+            <span>最久未玩</span>
+            <strong id="staleGame">-</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="controls">
+        <label>
+          搜索
+          <input id="searchInput" type="search" placeholder="游戏名或规则关键词" />
+        </label>
+        <label>
+          人数
+          <select id="playerFilter">
+            <option value="all">全部</option>
+            <option value="2">适合2人</option>
+            <option value="3">适合3人</option>
+            <option value="4">适合4人</option>
+            <option value="5">适合5人</option>
+          </select>
+        </label>
+        <label>
+          复杂度
+          <select id="complexityFilter">
+            <option value="all">全部</option>
+            <option value="轻">轻</option>
+            <option value="中">中</option>
+            <option value="重">重</option>
+          </select>
+        </label>
+        <label>
+          排序
+          <select id="sortMode">
+            <option value="stale">最近未玩</option>
+            <option value="name">名称</option>
+            <option value="complexity">复杂度</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="layout">
+        <aside class="panel">
+          <h2>新增桌游</h2>
+          <form id="gameForm" class="game-form">
+            <label>
+              名称
+              <input id="nameInput" required placeholder="例：勃艮第城堡" />
+            </label>
+            <div class="split">
+              <label>
+                最少人数
+                <input id="minPlayersInput" type="number" min="1" max="12" value="2" required />
+              </label>
+              <label>
+                最多人数
+                <input id="maxPlayersInput" type="number" min="1" max="12" value="4" required />
+              </label>
+            </div>
+            <div class="split">
+              <label>
+                时长分钟
+                <input id="durationInput" type="number" min="5" value="90" required />
+              </label>
+              <label>
+                复杂度
+                <select id="complexityInput">
+                  <option value="轻">轻</option>
+                  <option value="中" selected>中</option>
+                  <option value="重">重</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              上次游玩
+              <input id="lastPlayedInput" type="date" required />
+            </label>
+            <label>
+              封面图
+              <input id="coverInput" type="file" accept="image/*" />
+            </label>
+            <button class="primary" type="submit">加入收藏</button>
+          </form>
+        </aside>
+
+        <section class="panel list-panel">
+          <div class="panel-head">
+            <h2>收藏列表</h2>
+            <span id="visibleCount"></span>
+          </div>
+          <div id="gameList" class="game-list"></div>
+        </section>
+
+        <aside class="panel detail-panel">
+          <div id="detailView"></div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
