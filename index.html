@@ -10,24 +10,48 @@
     <main class="shell">
       <header class="topbar">
         <div>
-          <p class="eyebrow">聚会前快速复习</p>
+          <p class="eyebrow">聚会前快速复习 · 离线可改 · 回网合并</p>
           <h1>桌游规则遗忘点卡片库</h1>
         </div>
-        <div class="summary">
-          <div>
-            <span>收藏</span>
-            <strong id="gameCount">0</strong>
+        <div class="topbar-right">
+          <div class="sync-bar">
+            <span id="syncStatus" class="sync-status online">在线</span>
+            <label class="device-name">
+              本机
+              <input id="deviceName" type="text" />
+            </label>
+            <button id="goOnlineBtn" type="button" class="small">回网</button>
+            <button id="goOfflineBtn" type="button" class="small">断网</button>
           </div>
-          <div>
-            <span>遗忘点</span>
-            <strong id="ruleCount">0</strong>
-          </div>
-          <div>
-            <span>最久未玩</span>
-            <strong id="staleGame">-</strong>
+          <div class="summary">
+            <div>
+              <span>收藏</span>
+              <strong id="gameCount">0</strong>
+            </div>
+            <div>
+              <span>遗忘点</span>
+              <strong id="ruleCount">0</strong>
+            </div>
+            <div>
+              <span>待合并</span>
+              <strong id="pendingCount">0</strong>
+            </div>
+            <div>
+              <span>冲突保留</span>
+              <strong id="conflictCount">0</strong>
+            </div>
+            <div>
+              <span>最久未玩</span>
+              <strong id="staleGame">-</strong>
+            </div>
           </div>
         </div>
       </header>
+
+      <div class="capacity-wrap">
+        <div class="capacity-meter"><div id="capacityBar" class="bar"></div></div>
+        <span id="capacityText" class="capacity-text">0 / 12 待办</span>
+      </div>
 
       <section class="controls">
         <label>
@@ -119,8 +143,33 @@
           <div id="detailView"></div>
         </aside>
       </section>
+
+      <section id="syncPanel" class="panel sync-panel">
+        <div class="sync-panel-head">
+          <h2>改动账与同步</h2>
+          <div class="sync-panel-actions">
+            <button id="demoConflictBtn" type="button" class="small">一键演示两人改同一张卡</button>
+          </div>
+        </div>
+        <p class="sync-tip">断网时改动照常暂存本机成批次，回网后逐条并入共享改动账；同一张规则卡被两人同时修改时，两份内容都保留并标出差异，后到不盖先到；规则内容一变，相关复习确认立即失效需重确。</p>
+        <div class="sync-grid">
+          <div>
+            <h3>我的离线批次（回网后合并）</h3>
+            <div id="outboxList" class="sync-list"></div>
+          </div>
+          <div>
+            <h3>搭子发来待并入</h3>
+            <div id="peerList" class="sync-list"></div>
+          </div>
+          <div>
+            <h3>改动账（最近 12 条）</h3>
+            <div id="ledgerList" class="sync-list ledger"></div>
+          </div>
+        </div>
+      </section>
     </main>
 
+    <script src="ledger-core.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
