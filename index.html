@@ -29,6 +29,10 @@
         </div>
       </header>
 
+      <section class="syncbar" id="syncBar"></section>
+
+      <section class="conflict-panel" id="conflictPanel" hidden></section>
+
       <section class="controls">
         <label>
           搜索
@@ -65,7 +69,7 @@
 
       <section class="layout">
         <aside class="panel">
-          <h2>新增桌游</h2>
+          <h2 id="gameFormTitle">新增桌游</h2>
           <form id="gameForm" class="game-form">
             <label>
               名称
@@ -103,7 +107,8 @@
               封面图
               <input id="coverInput" type="file" accept="image/*" />
             </label>
-            <button class="primary" type="submit">加入收藏</button>
+            <button class="primary" type="submit" id="gameSubmitBtn">加入收藏</button>
+            <button type="button" id="cancelGameEditBtn" hidden>取消编辑</button>
           </form>
         </aside>
 
@@ -121,6 +126,6 @@
       </section>
     </main>
 
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

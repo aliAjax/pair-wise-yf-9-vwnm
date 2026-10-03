@@ -1,0 +1,8 @@
+{
+  "name": "boardgame-rule-cards",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node test/sync.test.mjs && node test/smoke.dom.mjs"
+  }
+}
